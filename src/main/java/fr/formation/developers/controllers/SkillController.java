@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
+
 @RestController
 public class SkillController {
     @GetMapping("/skills/{id}")
@@ -17,7 +19,7 @@ public class SkillController {
     }
 
     @PostMapping("/skills")
-    public void create(@RequestBody Skill skill) {
+    public void create(@Valid @RequestBody Skill skill) {
         System.out.println(skill);
     }
 }

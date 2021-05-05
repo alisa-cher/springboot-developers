@@ -1,11 +1,12 @@
 package fr.formation.developers.domain;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotNull;
 
 public class Developer {
     private String nickname;
     private String firstName;
     private String lastName;
+    @NotNull
     private LocalDate birthdate;
 
     public Developer() {}
