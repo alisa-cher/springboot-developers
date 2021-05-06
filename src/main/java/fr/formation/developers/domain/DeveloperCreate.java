@@ -2,20 +2,23 @@ package fr.formation.developers.domain;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 
-public class Developer {
-    private String nickname;
-    private String firstName;
-    private String lastName;
+public class DeveloperCreate extends DeveloperUpdate {
     @NotNull
-    private LocalDate birthdate;
+    private String nickname;
 
-    public Developer() {}
+    @NotNull
+    private String firstName;
 
-    public Developer(String nickname, String firstName, String lastName, LocalDate birthdate) {
+    @NotNull
+    private String lastName;
+
+    public DeveloperCreate() {}
+
+    public DeveloperCreate(String nickname, String firstName, String lastName, LocalDate birthdate) {
+        super(birthdate);
         this.nickname = nickname;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthdate = birthdate;
     }
 
     public String getNickname() {
@@ -42,21 +45,13 @@ public class Developer {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
-
     @Override
     public String toString() {
-        return "Developer [" +
-                "nickname=" + nickname + ", " +
-                "firstName=" + firstName + ", " +
-                "lastName=" + lastName + ", " +
-                "birthdate=" + birthdate +
-                "]";
+        return "DeveloperCreate{" +
+                "nickname='" + nickname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate=" + super.getBirthdate() +
+                '}';
     }
 }

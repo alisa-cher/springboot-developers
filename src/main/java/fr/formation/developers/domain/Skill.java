@@ -7,8 +7,7 @@ public class Skill {
     private String name;
 
 
-    public Skill() {
-    }
+    public Skill() {}
 
     public String getName() {
         return name;

@@ -1,6 +1,6 @@
 package fr.formation.developers.controllers;
-
 import fr.formation.developers.domain.Skill;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
