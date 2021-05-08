@@ -6,7 +6,6 @@ public class Skill {
     @NotNull
     private String name;
 
-
     public Skill() {}
 
     public String getName() {
