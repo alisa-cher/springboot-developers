@@ -1,13 +1,13 @@
 package fr.formation.developers.domain;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Team {
+    @NotBlank
     @NotNull
     @Size(min = 1, max = 255)
-    @Pattern(regexp = "\\A(?!\\s*\\Z).+")
     private String name;
 
     @NotNull

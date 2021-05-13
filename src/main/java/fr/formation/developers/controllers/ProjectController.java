@@ -19,12 +19,6 @@ public class ProjectController {
         repository.add(project2);
     }
 
-    // TODO - delete
-    @GetMapping
-    public List<ProjectCreate> getAll() {
-        return repository;
-    }
-
     @PostMapping
     public ProjectCreate createTeam(@RequestBody ProjectCreate project) {
         repository.add(project);

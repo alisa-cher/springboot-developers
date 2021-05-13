@@ -1,9 +1,11 @@
 package fr.formation.developers.domain;
 
 import javax.validation.constraints.NotNull;
+import fr.formation.developers.validation.Uppercase;
 
 public class Skill {
     @NotNull
+    @Uppercase
     private String name;
 
     public Skill() {}
