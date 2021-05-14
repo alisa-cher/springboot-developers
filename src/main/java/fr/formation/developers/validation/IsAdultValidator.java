@@ -18,9 +18,6 @@ public class IsAdultValidator implements ConstraintValidator<IsAdult, LocalDate>
         if (period.getYears() < 0) {
             return true;
         }
-        System.out.println("Birthday: " + birthdayDate);
-        System.out.println("LocalDate: " + now);
-        System.out.println("Years: " + period.getYears());
         return (period.getYears() >= ADULT_AGE);
     }
 }
