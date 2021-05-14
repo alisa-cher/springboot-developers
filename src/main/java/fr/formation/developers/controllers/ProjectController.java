@@ -20,7 +20,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    public ProjectCreate createTeam(@RequestBody ProjectCreate project) {
+    public ProjectCreate createTeam(@RequestBody @Valid ProjectCreate project) {
         repository.add(project);
         System.out.println("You've successfully created project " + project.getName());
         System.out.println(project);
@@ -43,3 +43,4 @@ public class ProjectController {
         System.out.println(project);
     }
 }
+

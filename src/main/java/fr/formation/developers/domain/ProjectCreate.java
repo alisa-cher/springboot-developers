@@ -1,23 +1,23 @@
 package fr.formation.developers.domain;
 
+import fr.formation.developers.validation.IsNotIdentical;
+
 import javax.validation.constraints.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+@IsNotIdentical
 public class ProjectCreate {
     private static final int NAME_MAX_LENGTH = 255;
     private static final int DESCRIPTION_MAX_LENGTH = 1000;
-    // TODO - find an annotation to replace this constant
-    private static final String IS_NOT_EMPTY = "\\A(?!\\s*\\Z).+";
 
     @NotNull
+    @NotBlank
     @Size(max = NAME_MAX_LENGTH)
-    @Pattern(regexp = IS_NOT_EMPTY)
     private String name;
 
     @NotNull
+    @NotBlank
     @Size(max = DESCRIPTION_MAX_LENGTH)
-    @Pattern(regexp = IS_NOT_EMPTY)
     private String description;
 
     @NotNull
