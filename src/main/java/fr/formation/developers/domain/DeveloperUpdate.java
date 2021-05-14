@@ -1,10 +1,14 @@
 package fr.formation.developers.domain;
 
+import fr.formation.developers.validation.IsAdult;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 public class DeveloperUpdate {
+    @Past
     @NotNull
+    @IsAdult
     private LocalDate birthdate;
 
     public DeveloperUpdate() {}

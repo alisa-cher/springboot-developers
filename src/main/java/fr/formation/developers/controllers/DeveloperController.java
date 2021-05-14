@@ -41,7 +41,7 @@ public class DeveloperController {
     }
 
     @PostMapping
-    public DeveloperCreate createDeveloper(@RequestBody DeveloperCreate developer){
+    public DeveloperCreate createDeveloper(@RequestBody @Valid DeveloperCreate developer){
          repository.add(developer);
          return developer;
     }
