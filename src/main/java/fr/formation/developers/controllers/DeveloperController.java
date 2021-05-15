@@ -13,26 +13,23 @@ import java.util.List;
 @RequestMapping("/developers")
 public class DeveloperController {
 
-    public List<DeveloperCreate> repository = new ArrayList<>();
+    private final List<DeveloperCreate> developersRepository = new ArrayList<>();
 
-    public DeveloperController() {
-
+    private void createMockedData() {
         DeveloperCreate dev1 = new DeveloperCreate("Dev1", "Prenom1", "Nom1", LocalDate.of(1978,12, 13));
         DeveloperCreate dev2 = new DeveloperCreate("Dev2", "Prenom2", "Nom2", LocalDate.of(1948,11, 13));
 
-        repository.add(dev1);
-        repository.add(dev2);
-
+        developersRepository.add(dev1);
+        developersRepository.add(dev2);
     }
 
-    @GetMapping
-    public List<DeveloperCreate> list() {
-        return repository;
+    public DeveloperController() {
+        this.createMockedData();
     }
 
     @GetMapping("/{nickname}")
     public DeveloperCreate getByNickname(@PathVariable String nickname) {
-        for (DeveloperCreate developer : repository) {
+        for (DeveloperCreate developer : developersRepository) {
             if(developer.getNickname().equals(nickname)) {
                 return developer;
             }
@@ -41,9 +38,9 @@ public class DeveloperController {
     }
 
     @PostMapping
-    public DeveloperCreate createDeveloper(@RequestBody @Valid DeveloperCreate developer){
-         repository.add(developer);
-         return developer;
+    public void createDeveloper(@RequestBody @Valid DeveloperCreate developer){
+         developersRepository.add(developer);
+         System.out.println(developer);
     }
 
     @PatchMapping("/{nickname}")
@@ -51,8 +48,7 @@ public class DeveloperController {
                 @PathVariable("nickname") String nickname,
                 @RequestBody @Valid DeveloperUpdate partial)
         {
-            System.out.println(partial);
-            for(DeveloperCreate item : repository) {
+            for(DeveloperCreate item : developersRepository) {
                 if (item.getNickname().equals(nickname)) {
                    item.setBirthdate(partial.getBirthdate());
                }

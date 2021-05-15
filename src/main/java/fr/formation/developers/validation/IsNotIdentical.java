@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE})
 @Constraint(validatedBy = {IsNotIdenticalValidator.class})
 
 public @interface IsNotIdentical {
