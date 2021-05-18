@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 public class SkillServiceImpl implements SkillService {
     @Override
     public SkillView getById(Long id) {
-        System.out.println("call in service");
         SkillView skillView = new SkillView();
         skillView.setName("Spring boot " + id);
         return skillView;

@@ -1,21 +1,24 @@
-package fr.formation.developers.domain;
+package fr.formation.developers.domain.dtos;
 import java.time.LocalDate;
-import javax.validation.constraints.NotNull;
 
-public class DeveloperCreate extends DeveloperUpdate {
-    @NotNull
+public class DeveloperView {
     private String nickname;
-
-    @NotNull
     private String firstName;
-
-    @NotNull
     private String lastName;
+    private LocalDate birthdate;
 
-    public DeveloperCreate() {}
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
 
-    public DeveloperCreate(String nickname, String firstName, String lastName, LocalDate birthdate) {
-        super(birthdate);
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public DeveloperView() {}
+
+    public DeveloperView(String nickname, String firstName, String lastName, LocalDate birthdate) {
+        this.birthdate = birthdate;
         this.nickname = nickname;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,7 +54,7 @@ public class DeveloperCreate extends DeveloperUpdate {
                 "nickname='" + nickname + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthdate=" + super.getBirthdate() +
+                ", birthdate=" + birthdate +
                 '}';
     }
 }

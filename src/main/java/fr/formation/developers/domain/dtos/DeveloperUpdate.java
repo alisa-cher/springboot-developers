@@ -1,4 +1,4 @@
-package fr.formation.developers.domain;
+package fr.formation.developers.domain.dtos;
 
 import fr.formation.developers.validation.IsAdult;
 import javax.validation.constraints.NotNull;
