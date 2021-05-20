@@ -5,5 +5,6 @@ import fr.formation.developers.domain.dtos.SkillView;
 
 public interface SkillService {
     SkillView getById(Long id);
-    void create(SkillCreate skill);
+    SkillView getByName(String name);
+    void create(SkillCreate dto);
 }

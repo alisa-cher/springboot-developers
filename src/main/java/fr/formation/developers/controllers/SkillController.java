@@ -27,8 +27,13 @@ public class SkillController {
         return service.getById(id);
     }
 
+    @GetMapping("/skills/{name}/by-name")
+    public SkillView getByName(@PathVariable("name") String name) {
+        return service.getByName(name);
+    }
+
     @PostMapping("/skills")
-    public void create(@Valid @RequestBody SkillCreate skill) {
-        service.create(skill);
+    public void create(@Valid @RequestBody SkillCreate dto) {
+        service.create(dto);
     }
 }
