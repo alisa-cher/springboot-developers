@@ -1,8 +1,8 @@
 package fr.formation.developers.controllers;
 
-import fr.formation.developers.domain.ProjectClose;
-import fr.formation.developers.domain.ProjectCreate;
-import fr.formation.developers.domain.ProjectUpdate;
+import fr.formation.developers.domain.dtos.ProjectClose;
+import fr.formation.developers.domain.dtos.ProjectCreate;
+import fr.formation.developers.domain.dtos.ProjectUpdate;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDate;

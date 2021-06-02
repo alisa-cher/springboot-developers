@@ -1,6 +1,6 @@
 package fr.formation.developers.validation;
 
-import fr.formation.developers.domain.ProjectCreate;
+import fr.formation.developers.domain.dtos.ProjectCreate;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
