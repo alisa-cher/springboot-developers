@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @RestController
 public class SkillController {
 
-    //@Autowired //JEE = @Inject
     private final SkillService service;
 
     public SkillController(SkillService service) {

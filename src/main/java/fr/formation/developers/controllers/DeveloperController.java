@@ -1,8 +1,9 @@
 package fr.formation.developers.controllers;
 
-import fr.formation.developers.domain.dtos.DeveloperCreate;
+import fr.formation.developers.domain.dtos.IDeveloperView;
 import fr.formation.developers.domain.dtos.DeveloperUpdate;
 import fr.formation.developers.domain.dtos.DeveloperView;
+import fr.formation.developers.domain.dtos.DeveloperCreate;
 import fr.formation.developers.services.DeveloperService;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,16 +25,21 @@ public class DeveloperController {
     }
 
     @PostMapping
-    public void createDeveloper(@RequestBody @Valid DeveloperCreate developer){
-        service.createDeveloper(developer);
+    public void createDeveloper(@RequestBody @Valid DeveloperCreate dto){
+        service.createDeveloper(dto);
     }
 
     @PatchMapping("/{nickname}")
         public void updateBirthdate(
                 @PathVariable("nickname") String nickname,
-                @RequestBody @Valid DeveloperUpdate partial)
+                @RequestBody @Valid DeveloperUpdate dto)
         {
-            service.updateBirthdate(nickname, partial);
+            service.updateBirthdate(nickname, dto);
         }
+
+    @GetMapping("/find")
+    public IDeveloperView find() {
+        return service.find();
+    }
 }
 

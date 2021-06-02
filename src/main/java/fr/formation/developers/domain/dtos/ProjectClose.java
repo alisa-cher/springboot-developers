@@ -1,4 +1,4 @@
-package fr.formation.developers.domain;
+package fr.formation.developers.domain.dtos;
 
 import javax.validation.constraints.FutureOrPresent;
 import java.time.LocalDate;

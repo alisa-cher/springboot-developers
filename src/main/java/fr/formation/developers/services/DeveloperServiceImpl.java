@@ -1,54 +1,55 @@
 package fr.formation.developers.services;
 
-import fr.formation.developers.domain.dtos.DeveloperCreate;
-import fr.formation.developers.domain.dtos.DeveloperUpdate;
-import fr.formation.developers.domain.dtos.DeveloperView;
+import fr.formation.developers.domain.dtos.*;
+import fr.formation.developers.domain.entities.Developer;
+import fr.formation.developers.repositories.DeveloperRepository;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class DeveloperServiceImpl implements DeveloperService {
 
-    private final List<DeveloperView> developersRepository = new ArrayList<>();
+    private final DeveloperRepository repository;
 
-    void createMockedData() {
-        DeveloperView dev1 = new DeveloperView("Dev1", "Prenom1", "Nom1", LocalDate.of(1978,12, 13));
-        DeveloperView dev2 = new DeveloperView("Dev2", "Prenom2", "Nom2", LocalDate.of(1948,11, 13));
-
-        developersRepository.add(dev1);
-        developersRepository.add(dev2);
-    }
-
-    public DeveloperServiceImpl() {
-        this.createMockedData();
+    public DeveloperServiceImpl(DeveloperRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public DeveloperView getByNickname(String nickname) {
-        for (DeveloperView developer : developersRepository) {
-            if(developer.getNickname().equals(nickname)) {
-                return developer;
-            }
-        }
-        return null;
+        Developer entity = repository.findByNickname(nickname).get();
+        DeveloperView view = new DeveloperView();
+        view.setNickname(entity.getNickname());
+        view.setFirstName(entity.getFirstName());
+        view.setLastName(entity.getLastName());
+        view.setBirthdate(entity.getBirthdate());
+        System.out.println(view);
+        return view;
     }
 
     @Override
-    public void createDeveloper(DeveloperCreate developer) {
-        //developersRepository.add(developer);
-        System.out.println(developer);
+    public void createDeveloper(DeveloperCreate dto) {
+        Developer entity = new Developer();
+        entity.setNickname(dto.getNickname());
+        entity.setFirstName(dto.getFirstName());
+        entity.setLastName(dto.getLastName());
+        entity.setBirthdate(dto.getBirthdate());
+        repository.save(entity);
+        System.out.println(dto);
     }
 
     @Override
-    public void updateBirthdate(String nickname, DeveloperUpdate update) {
-        for(DeveloperView item : developersRepository) {
-            if (item.getNickname().equals(nickname)) {
-                item.setBirthdate(update.getBirthdate());
-                System.out.println(update);
-            }
-        }
+    public void updateBirthdate(String nickname, DeveloperUpdate dto) {
+        Developer entity = repository.findByNickname(nickname).get();
+        System.out.println(dto);
+        entity.setBirthdate(dto.getBirthdate());
+        repository.save(entity);
+    }
+
+    @Override
+    public IDeveloperView find() {
+        String lastName = "Nom3";
+        String firstName= "Prenom3";
+
+        return repository.findByFirstNameAndLastName(firstName, lastName).get();
     }
 }

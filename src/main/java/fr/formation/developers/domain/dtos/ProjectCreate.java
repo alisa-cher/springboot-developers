@@ -1,4 +1,4 @@
-package fr.formation.developers.domain;
+package fr.formation.developers.domain.dtos;
 
 import fr.formation.developers.validation.IsNotIdentical;
 
@@ -15,7 +15,7 @@ La question est: quelle est la bonne pratique pour résoudre ce genre de problem
 pour que le code soit plus lisible/concis/plus facile a maintenir?*/
 
 
-/*TODO - cette annotation rejeter la création d’un projet si le nom et la description sont identiques.
+/*TODO - cette annotation rejete la création d’un projet si le nom et la description sont identiques.
 Par conséquent, ca implique que si on fait le PATCH et change la description, on doit verifier
 a ce stade aussi que le nom et la description ne sont identiques.
 
@@ -31,7 +31,6 @@ public class ProjectCreate extends ProjectUpdate {
     private static final int NAME_MAX_LENGTH = 255;
 
     @NotNull
-    @Email
     @NotBlank
     @Size(max = NAME_MAX_LENGTH)
     private String name;
